@@ -142,12 +142,16 @@ export class ProductsComponent {
   
           if (isEdit) {
             this.productsService.updateProduct(productToEdit.id, product).subscribe({
-              next: () => Swal.fire('Éxito', 'Producto modificado exitosamente.', 'success'),
+              next: () => {
+                Swal.fire('Éxito', 'Producto modificado exitosamente.', 'success')
+                location.reload();},
               error: () => Swal.fire('Error', 'Hubo un problema al modificar el producto.', 'error')
             });
           } else {
             this.productsService.createProduct(product).subscribe({
-              next: () => Swal.fire('Éxito', 'Producto creado exitosamente.', 'success'),
+              next: () => {
+                Swal.fire('Éxito', 'Producto creado exitosamente.', 'success')
+                location.reload();},
               error: () => Swal.fire('Error', 'Hubo un problema al crear el producto.', 'error')
             });
           }

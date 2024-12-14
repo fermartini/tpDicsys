@@ -58,12 +58,16 @@ public openCategoryForm(categoryEdit: any = null) {
   
           if (isEdit) {
             this.categoriesService.updateCategory(categoryEdit.id, category).subscribe({
-              next: () => Swal.fire('Éxito', 'categoria modificado exitosamente.', 'success'),
+              next: () => {
+                Swal.fire('Éxito', 'categoria modificado exitosamente.', 'success')
+                location.reload();},
               error: () => Swal.fire('Error', 'Hubo un problema al modificar el categoria.', 'error')
             });
           } else {
             this.categoriesService.createCategory(category).subscribe({
-              next: () => Swal.fire('Éxito', 'categoria creado exitosamente.', 'success'),
+              next: () => {
+                Swal.fire('Éxito', 'categoria creado exitosamente.', 'success')
+                location.reload();},
               error: () => Swal.fire('Error', 'Hubo un problema al crear el categoria.', 'error')
             });
           }
