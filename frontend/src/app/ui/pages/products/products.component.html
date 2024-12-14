@@ -1,0 +1,31 @@
+<app-header/>
+<div class="container">
+    <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+            <th (click)="openProductForm()" class="add"><p>AGREGAR</p></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of products">
+            <td>{{ prod.nombre }}</td>
+            <td>{{ prod.descripcion }}</td>
+            <td>$ {{ prod.precio }}</td>
+            <td>{{ prod.stock }}</td>
+            <td>{{ prod.nombreCategoria  }}</td>
+            <td>
+              <button (click)="openProductForm(prod)" >Modificar</button>
+              <button (click)="deleteProduct(prod.id)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+<app-footer/>

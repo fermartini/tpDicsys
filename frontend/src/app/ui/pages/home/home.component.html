@@ -1,0 +1,8 @@
+<app-header/>
+<h2>{{GlobalText.exporer}}{{GlobalText.categories}}</h2>
+<div class="categories" >
+    <app-category  *ngFor="let category of categories" [nameCategory]="category.nombre" [iconCategory]="category.imagenCategoria" (categoryClicked)="navegateProducts(category)"></app-category>
+</div>
+
+
+<app-footer class="footer"/>

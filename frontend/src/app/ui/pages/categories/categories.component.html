@@ -1,0 +1,25 @@
+<app-header/>
+<div class="container">
+    <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cate of category">
+            <td>{{ cate.id }}</td>
+            <td>{{ cate.nombre }}</td>
+            <td>
+              <button >Modificar</button>
+              <button >Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+<app-footer/>
