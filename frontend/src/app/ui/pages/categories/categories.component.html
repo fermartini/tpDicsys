@@ -3,10 +3,11 @@
     <table>
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Nombre</th>
+            <th>{{globalText.id}}</th>
+            <th>{{globalText.name}}</th>
             
-            <th>Acciones</th>
+            <th>{{globalText.accion}}</th>
+            <th class="add" (click)="openCategoryForm()"><p>{{globalText.agregar}}</p></th>
           </tr>
         </thead>
         <tbody>
@@ -14,8 +15,7 @@
             <td>{{ cate.id }}</td>
             <td>{{ cate.nombre }}</td>
             <td>
-              <button >Modificar</button>
-              <button >Eliminar</button>
+              <button (click)="openCategoryForm(cate)" >{{globalText.modificar}}</button>
             </td>
           </tr>
         </tbody>

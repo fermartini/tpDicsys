@@ -54,3 +54,14 @@
     background-color: #6200ea; /* Asegurar color cuando se presiona */
   }
   
+  .add{
+    color: green!important;
+    cursor: pointer;
+   
+  }
+  .add p:hover{
+    transition: all 0.1s ease-in-out;
+  }
+  .add p:hover{
+    scale: 1.2;
+  }

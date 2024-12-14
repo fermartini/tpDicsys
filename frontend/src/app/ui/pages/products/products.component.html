@@ -3,13 +3,13 @@
     <table>
         <thead>
           <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Categoría</th>
-            <th>Acciones</th>
-            <th (click)="openProductForm()" class="add"><p>AGREGAR</p></th>
+            <th>{{globalText.name}}</th>
+            <th>{{globalText.descripcion}}</th>
+            <th>{{globalText.precio}}</th>
+            <th>{{globalText.stock}}ck</th>
+            <th>{{globalText.categoria}}</th>
+            <th>{{globalText.accion}}</th>
+            <th (click)="openProductForm()" class="add"><p>{{globalText.agregar}}</p></th>
           </tr>
         </thead>
         <tbody>
@@ -20,8 +20,8 @@
             <td>{{ prod.stock }}</td>
             <td>{{ prod.nombreCategoria  }}</td>
             <td>
-              <button (click)="openProductForm(prod)" >Modificar</button>
-              <button (click)="deleteProduct(prod.id)">Eliminar</button>
+              <button (click)="openProductForm(prod)" >{{globalText.modificar}}</button>
+              <button (click)="deleteProduct(prod.id)">{{globalText.eliminar}}</button>
             </td>
           </tr>
         </tbody>

@@ -1,14 +1,23 @@
 export class GlobalText {
-    public title: string = 'Trabajo Practico Dicsys Angular/Node'
-    public home: string = 'Inicio'
-    public products: string = 'Productos'
-    public categories: string = 'Categorias'
-    public footerName: string = '2024 Fernando Martini'
-    public angularNode: string = 'Desarrollado con Angular y Node.js'
-    public job : string = 'Trabajo realizado para '
-    public dicsys: string = 'Dicsys'
-    public thank : string = 'Gracias por visitar mi proyecto'
-    public visit : string = 'Visita '
-    public exporer : string = 'Explorar '
-    
+    public title = 'Trabajo Practico Dicsys Angular/Node'
+    public home = 'Inicio'
+    public products = 'Productos'
+    public categories = 'Categorias'
+    public footerName = '2024 Fernando Martini'
+    public angularNode = 'Desarrollado con Angular y Node.js'
+    public job  = 'Trabajo realizado para '
+    public dicsys = 'Dicsys'
+    public thank  = 'Gracias por visitar mi proyecto'
+    public visit  = 'Visita '
+    public exporer  = 'Explorar '
+    public id = 'Id'
+    public name = 'Nombre'
+    public accion = "Accion"
+    public agregar = "Agregar"
+    public modificar = "Modificar"
+    public eliminar = "Eliminar"
+    public descripcion = "Descripcion"
+    public precio = "Precio"
+    public stock = "Stock"
+    public categoria = "Categoria"
 }

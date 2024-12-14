@@ -47,7 +47,7 @@ export class ProductsComponent {
     }
   }
 
-  //ponerle nombre a la categoria. SIRVE PARA CUANDO TRAE TODOS LOS PRODUCTOS
+  
   private getCategoryNamesForProducts(products: any[]) {
     const categoryRequests = products.map(product => {
       this.productsService.getCategoryById(product.id_categoria).subscribe(response => {
@@ -56,34 +56,41 @@ export class ProductsComponent {
     });
   
     forkJoin(categoryRequests).subscribe((categories: any[]) => {
-      console.log('Categorías obtenidas:', categories);
       products.forEach((product, index) => {
-        product.nombreCategoria = categories[index][0]?.nombre || 'Categoría desconocida'; // Ajusta si el nombre no está presente
+        product.nombreCategoria = categories[index][0]?.nombre || 'Categoría desconocida'; 
       });
     });
   }
   
   public deleteProduct(id: number) {
-    if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
-      this.productsService.deleteProduct(id).subscribe(
-        (result) => {
-          console.log('Producto eliminado correctamente:', result);
-          location.reload();
-        },
-        (error) => {
-          console.error('Error al eliminar el producto:', error);
-        }
-      );
-    } else {
-      console.log('Eliminación cancelada por el usuario.');
-    }
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Sí, eliminarlo',      
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.productsService.deleteProduct(id).subscribe(
+          (result) => {
+            console.log('Producto eliminado correctamente:', result);
+            location.reload();
+          },
+          (error) => {
+            console.error('Error al eliminar el producto:', error);
+          }
+        );
+      } else {
+        console.log('Eliminación cancelada por el usuario.');
+      }
+    });
   }
   
   public openProductForm(productToEdit: any = null) {
-    // Si `productToEdit` es null, asumimos que es una creación de producto.
     const isEdit = !!productToEdit;
   
-    // Prellenar los campos si estamos editando
     const defaultNombre = productToEdit ? productToEdit.nombre : '';
     const defaultDescripcion = productToEdit ? productToEdit.descripcion : '';
     const defaultPrecio = productToEdit ? productToEdit.precio : '';
@@ -134,13 +141,11 @@ export class ProductsComponent {
           const product = result.value;
   
           if (isEdit) {
-            // Si es una edición, llamar al servicio de actualización
             this.productsService.updateProduct(productToEdit.id, product).subscribe({
               next: () => Swal.fire('Éxito', 'Producto modificado exitosamente.', 'success'),
               error: () => Swal.fire('Error', 'Hubo un problema al modificar el producto.', 'error')
             });
           } else {
-            // Si es una creación, llamar al servicio de creación
             this.productsService.createProduct(product).subscribe({
               next: () => Swal.fire('Éxito', 'Producto creado exitosamente.', 'success'),
               error: () => Swal.fire('Error', 'Hubo un problema al crear el producto.', 'error')
